@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { File } from './type';
-import { MAX_SIZE, SPLITTED_DIR } from './config';
+import { MAX_LINE, SPLITTED_DIR } from './config';
 import { getFileData, getRawFilePaths, getSplitFilePaths, saveData } from './util';
 
 /**
@@ -38,14 +38,15 @@ function saveSplitData(splitDataList: string[], file: File) {
  * ファイルのデータを75MB以内に分割する
  */
 function splitData(data: string): string[] {
-  const dataLength = data.length;
-  const splitCount = Math.ceil(dataLength / MAX_SIZE);
+  const lines = data.split('\n');
+  const dataLength = lines.length;
+  const splitCount = Math.ceil(dataLength / MAX_LINE);
 
   const splitDataList: string[] = [];
   for (let i = 0; i < splitCount; i++) {
-    const start = i * MAX_SIZE;
-    const end = (i + 1) * MAX_SIZE;
-    const splitData = data.slice(start, end);
+    const start = i * MAX_LINE;
+    const end = (i + 1) * MAX_LINE;
+    const splitData = lines.slice(start, end).join('\n');
     splitDataList.push(splitData);
   }
 

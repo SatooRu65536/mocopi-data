@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { File } from './type';
-import { MAX_SIZE, RAW_DIR, SPLITTED_DIR } from './config';
+import { RAW_DIR, SPLITTED_DIR } from './config';
 
 /**
  * ファイルのデータを取得する
