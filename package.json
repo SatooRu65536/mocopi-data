@@ -1,7 +1,8 @@
 {
   "name": "mocopi-data-spliter",
   "scripts": {
-    "split": "ts-node ./script/split.ts"
+    "split": "ts-node ./script/split.ts",
+    "restore": "ts-node ./script/restore.ts"
   },
   "license": "MIT",
   "devDependencies": {
